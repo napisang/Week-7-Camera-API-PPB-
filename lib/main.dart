@@ -79,7 +79,7 @@ class _CameraPageState extends State<CameraPage> {
     return Scaffold(
       backgroundColor: pinkMuda,
       appBar: AppBar(
-        title: const Text('Camera API'),
+        title: const Text('nafisa cam'),
         backgroundColor: pinkSoft,
         foregroundColor: pinkTua,
       ),
