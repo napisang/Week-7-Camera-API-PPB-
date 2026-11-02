@@ -34,6 +34,10 @@ class _CameraPageState extends State<CameraPage> {
   XFile? foto;
   bool bukaKamera = false;
 
+  final Color pinkMuda = const Color(0xFFFFE4EC);
+  final Color pinkSoft = const Color(0xFFF8BBD0);
+  final Color pinkTua = const Color(0xFFAD1457);
+
   @override
   void initState() {
     super.initState();
@@ -64,16 +68,20 @@ class _CameraPageState extends State<CameraPage> {
   @override
   Widget build(BuildContext context) {
     if (controller == null || !controller!.value.isInitialized) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
+      return Scaffold(
+        backgroundColor: pinkMuda,
+        body: Center(
+          child: CircularProgressIndicator(color: pinkSoft),
+        ),
       );
     }
 
     return Scaffold(
+      backgroundColor: pinkMuda,
       appBar: AppBar(
         title: const Text('Camera API'),
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
+        backgroundColor: pinkSoft,
+        foregroundColor: pinkTua,
       ),
       body: Center(
         child: bukaKamera
@@ -90,6 +98,10 @@ class _CameraPageState extends State<CameraPage> {
                     onPressed: ambilFoto,
                     icon: const Icon(Icons.camera),
                     label: const Text('Ambil Foto'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: pinkSoft,
+                      foregroundColor: pinkTua,
+                    ),
                   ),
                   const SizedBox(height: 20),
                 ],
@@ -98,7 +110,10 @@ class _CameraPageState extends State<CameraPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   foto == null
-                      ? const Text('Belum ada foto')
+                      ? Text(
+                          'Belum ada foto',
+                          style: TextStyle(color: pinkTua),
+                        )
                       : Transform.flip(
                           flipX: true,
                           child: Image.file(File(foto!.path), height: 400),
@@ -112,6 +127,10 @@ class _CameraPageState extends State<CameraPage> {
                     },
                     icon: const Icon(Icons.camera_alt),
                     label: const Text('Buka Kamera'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: pinkSoft,
+                      foregroundColor: pinkTua,
+                    ),
                   ),
                 ],
               ),
